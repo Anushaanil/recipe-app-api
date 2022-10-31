@@ -11,6 +11,7 @@ CREATE_USER_URL = reverse('user:create')
 TOKEN_URL = reverse('user:token')
 ME_URL = reverse('user:me')
 
+
 def create_user(**params):
     """create and return a new user."""
     return User.objects.create_user(**params)
@@ -115,14 +116,15 @@ class PublicUserApiTests(TestCase):
         res = self.client.get(ME_URL)
         self.assertEqual(res.status_code, status.HTTP_401_UNAUTHORIZED)
 
+
 class privateuserApiTests(TestCase):
     """Test API requests that require Authentication."""
 
     def setUp(self):
         self.user = create_user(
-            email = 'test@example.com',
-            password = 'testpass123',
-            name = 'Test Name',
+            email='test@example.com',
+            password='testpass123',
+            name='Test Name',
         )
         self.client = APIClient()
         self.client.force_authenticate(user=self.user)

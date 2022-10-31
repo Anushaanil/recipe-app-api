@@ -5,6 +5,7 @@ from ..models import User, Recipe
 from django.test import TestCase
 from decimal import Decimal
 
+
 class ModelTests(TestCase):
     """Test models."""
 
@@ -55,11 +56,11 @@ class ModelTests(TestCase):
         )
 
         recipe = Recipe.objects.create(
-            user = user,
-            title = 'Sample recipe',
-            time_minutes = 5,
-            price = Decimal('5.50'),
-            description = 'Sample recipe description',
+            user=user,
+            title='Sample recipe',
+            time_minutes=5,
+            price=Decimal('5.50'),
+            description='Sample recipe description',
         )
 
         self.assertEqual(str(recipe), recipe.title)
